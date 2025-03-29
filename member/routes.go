@@ -71,7 +71,7 @@ func BookClassHandler(w http.ResponseWriter, r *http.Request) {
 
 	// Respond with the booking details
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusCreated)
+	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(newBooking)
 }
 
@@ -79,7 +79,7 @@ func BookClassHandler(w http.ResponseWriter, r *http.Request) {
 func GetAvailableClasses(w http.ResponseWriter, r *http.Request) {
 	// Respond with the booking details
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusCreated)
+	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(owner.Classes)
 
 }

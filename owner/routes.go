@@ -45,6 +45,12 @@ func CreateClassHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Check if the booking date is within the class date range
+	if newClass.StartDate.After(newClass.EndDate) || newClass.EndDate.Before(newClass.StartDate) {
+		http.Error(w, "Booking date is outside of the class range", http.StatusBadRequest)
+		return
+	}
+
 	// Increment class ID for uniqueness
 	classIDCounter++
 	newClass.ID = classIDCounter
